@@ -10,6 +10,11 @@ function Home({ appis, isDarkMode }) {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
+    // Har safar sahifa yuklanganda yuqoriga skroll qilish
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowScrollButton(true);
@@ -29,6 +34,13 @@ function Home({ appis, isDarkMode }) {
     });
   };
 
+  // 🔎 Filterlangan mamlakatlar ro‘yxati (search + region)
+  const filteredCountries = appis.filter((item) => {
+    const matchesSearch = item.name.common.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesRegion = selectedRegion === "" || item.region === selectedRegion;
+    return matchesSearch && matchesRegion;
+  });
+
   return (
     <div className={isDarkMode ? "home_bg active" : "home_bg"}>
       <div className="container">
@@ -42,7 +54,7 @@ function Home({ appis, isDarkMode }) {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <select onChange={(e) => setSelectedRegion(e.target.value)}>
+          <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)}>
             <option value="">All Regions</option>
             <option value="Africa">Africa</option>
             <option value="Americas">Americas</option>
@@ -53,9 +65,13 @@ function Home({ appis, isDarkMode }) {
         </div>
 
         <div className="contry_cards">
-          {appis.length > 0 ? (
-            appis.map((item, index) => (
-              <Link to={`/country/${item.cca3}`} key={index}>
+          {filteredCountries.length > 0 ? (
+            filteredCountries.map((item, index) => (
+              <Link
+                to={`/country/${item.cca3}`}
+                key={index}
+                onClick={() => window.scrollTo(0, 0)} // 📌 Sahifa yuqoriga ko‘tariladi
+              >
                 <div className="contry_card">
                   <img src={item.flags.png} alt={item.name.common} />
                   <h2>
@@ -81,11 +97,10 @@ function Home({ appis, isDarkMode }) {
               </Link>
             ))
           ) : (
-            <p>Loading...</p>
+            <p>No matching countries found.</p>
           )}
         </div>
 
-      
         {showScrollButton && (
           <button className="scrollToTop" onClick={scrollToTop}>
             <FaArrowUp />
