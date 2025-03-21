@@ -1,0 +1,161 @@
+
+.home_bg{
+    transition: all .7s ease-in-out;
+    background-color: rgb(235, 234, 233);
+    min-height: 651px;
+
+}
+.home_bg.active{
+    background-color: #1e2e3d;
+    color: white;
+}
+
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+    flex-wrap: wrap;
+
+}
+
+.input1{
+    width: 300px;
+    padding: 14px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid rgb(121, 118, 118);
+    border-radius: 10px;
+    transition: all .7s ease-in-out;
+}
+
+input{
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: transparent;
+
+}
+.home_bg.active .input1{
+    background-color: #29343f;
+    border: none;
+    
+}
+.home_bg.active input{
+    background-color: transparent;
+    color: white;
+}
+select{
+    padding: 8px 5px;
+    border-radius: 5px;
+    transition: all .7s ease-in-out;
+    border: none;
+    outline: none;
+    padding: 12px 10px;
+}
+.home_bg.active select{
+    background-color: #293846;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 12px 10px;
+}
+.contry_cards{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 50px 0;
+    list-style: none;
+}
+.contry_cards a{
+    text-decoration: none;
+    color: inherit;
+}
+.contry_card{
+    width: 270px;
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+    background-color: rgba(203, 207, 210, 0.207);
+    cursor: pointer;
+    overflow: hidden;
+}
+.contry_card:hover {
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3); 
+    transform: translateY(-15px);
+}
+.home_bg.active .contry_card:hover {
+    box-shadow: 10px 10px 15px rgba(160, 156, 156, 0.3); 
+    transform: translateY(-15px);
+}
+.contry_card img{
+    width: 100%;
+    height: 180px;
+}
+.contry_card h2{
+    padding:15px 15px ;
+}
+
+.contry_text{
+    padding: 10px 15px;
+    line-height: 1.5;
+    margin-top: -10px;
+}
+.contry_text h3>span{
+    color: rgba(77, 77, 78, 0.73);
+}
+.home_bg.active .contry_text h3>span{
+    color: rgba(236, 233, 230, 0.566);
+    
+}
+.scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .scrollToTop:hover {
+    background-color: #0056b3;
+  }
+  
+  .scrollToTop:active {
+    transform: scale(0.9);
+  }
+  
+
+@media(max-width: 480px){
+    .home_bg{
+    min-height: 672px;
+
+    }
+.home_bg .container{
+    padding: 0 30px;
+    
+}
+.inputs{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-direction: column;
+}
+.contry_cards{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+
+}
+}
