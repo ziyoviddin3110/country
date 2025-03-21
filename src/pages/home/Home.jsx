@@ -97,7 +97,7 @@ function Home({ appis, isDarkMode }) {
               </Link>
             ))
           ) : (
-            <p>No matching countries found.</p>
+            <p>No matching countries found</p>
           )}
         </div>
 
